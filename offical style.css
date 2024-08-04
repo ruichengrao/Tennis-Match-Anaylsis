@@ -1,0 +1,359 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #eeeeba;
+}
+
+
+#app-title {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #3e8e41;
+    color: white;
+    font-size: 30px;
+}
+
+#app-title a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Login Screen Styles */
+
+#login-screen {
+    width: 480px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #efefcf;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#login-screen h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 36px;
+    color: #001112;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login-form label {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#login-form input[type="text"],
+#login-form input[type="password"] {
+    width: 80%;
+    height: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ebebdc;
+}
+
+#login-form button[type="submit"] {
+    width: 100%;
+    height: 40px;
+    background-color: #3e8e41;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#login-form button[type="submit"]:hover {
+    background-color: #347236;
+}
+
+#login-error {
+    color: #BA0021;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+#main-screen {
+    position: relative;
+    /* Add relative positioning to the container */
+}
+
+#create-match-btn {
+    position: absolute;
+    /* Add absolute positioning to the button */
+    top: 100%;
+    /* Move the button 50% from the top */
+    left: 50%;
+    /* Move the button 50% from the left */
+    transform: translate(-50%, -50%);
+    /* Move the button back by half of its own width and height to center it */
+    background-color: #4CAF50;
+    /* Green background */
+    color: #ffffff;
+    /* White text */
+    padding: 10px 20px;
+    /* Add some padding */
+    border: 2px solid #333;
+    /* Add a 2px solid black border */
+    border-radius: 5px;
+    /* Add rounded corners */
+    cursor: pointer;
+    /* Change cursor to a pointing hand */
+}
+
+#create-match-btn,#create-match-main-btn:hover {
+    background-color: #3e8e41;
+    /* Darker green on hover */
+    border-color: #666;
+    /* Change border color to dark gray on hover */
+}
+
+/* Utility classes */
+.hidden {
+    display: none;
+}
+
+
+/* Add some basic styling to the match screen */
+#match-screen {
+    /* Center the match screen horizontally and vertically */
+    position: absolute;
+    top: 395px;
+    left: 50%;
+    transform: translate(-50%, -40%);
+
+    /* Add some padding and background color */
+    padding: 0px;
+    background-color: #eeeeba;
+
+
+    /* Make it responsive */
+    max-width: 600px;
+    width: 100%;
+}
+
+
+#score-board p {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#score-board span {
+    font-weight: bold;
+    margin-top: 0px;
+
+}
+
+#score {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#player1-score-container,
+#player2-score-container {
+    width: 50%;
+    text-align: center;
+}
+
+#player1-score,
+#player2-score {
+    font-size: 75px;
+    font-weight: bold;
+}
+
+/* Style the buttons */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+.action-btn {
+    margin-bottom: 10px;
+}
+
+.serve-action-btn {
+    background-color: #009688;
+}
+
+.serve-action-btn:hover {
+    background-color: #00796b;
+}
+
+/* Style the player actions */
+#player1-actions,
+#player2-actions {
+    margin-bottom: 20px;
+}
+
+#player1-actions h3,
+#player2-actions h3 {
+    margin-top: 0;
+}
+
+/* Style the toggle server button */
+#toggle-server-btn {
+    margin-bottom: 20px;
+}
+
+#server-display {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Style the game stats button */
+#game-stats-btn {
+    margin-bottom: 20px;
+}
+
+/* Add a hidden class to hide the match screen by default */
+.hidden {
+    display: none;
+}
+
+
+
+
+
+
+#main-screen {
+    padding-top: 40px;
+    /* add 20px of padding to the top */
+    text-align: center;
+}
+
+#main-screen button {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Button styles */
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Player action styles */
+#player1-actions,
+#player2-actions {
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;
+}
+
+#player1-actions h3,
+#player2-actions h3 {
+    margin-bottom: 10px;
+}
+
+/* Details and outcome options styles */
+#details-options,
+#outcome-options {
+    margin-top: 20px;
+}
+
+#stats-list {
+    list-style: none;
+    /* remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+#stats-list li {
+    margin-bottom: 10px;
+    padding-left: 0;
+    /* remove default padding */
+    padding-right: 10px;
+    display: flex;
+    /* use flexbox to align timestamp and text */
+    justify-content: space-between;
+    /* space between timestamp and text */
+    align-items: center;
+}
+
+#stats-list li span.timestamp {
+    font-size: 14px;
+    color: #3e8e41;
+    width: 80px;
+    /* set a fixed width for the timestamp */
+    text-align: right;
+    /* right-align the timestamp */
+    margin-left: 10px;
+}
+
+#stats-list li span.stat-text {
+    flex: 1;
+    /* take up the remaining space */
+    padding-left: 10px;
+    /* add some padding between timestamp and text */
+    color: #3e8e41;
+}
+
+#print-download-btn,
+#back-to-match-btn {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.game-stats {
+    font-size: 30px;
+}
+
+.player-container {
+    text-align: center;
+}
+
+.player-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.action-boxes {
+    text-align: center;
+
+}
+
+.action-box {
+    display: inline-block;
+    /* add this to display boxes horizontally */
+    width: 200px;
+    /* set a fixed width for each box */
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

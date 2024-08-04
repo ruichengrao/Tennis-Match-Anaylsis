@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennis Match Analysis</title>
+    <link rel="stylesheet" href="offical style.css">
+    <style>
+        body {
+            padding-bottom: 150px;
+            margin: 0;
+            /* add this to make room for the fixed footer */
+        }
+
+        #app-title {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #3e8e41;
+            color: white;
+            font-size: 30px;
+        }
+
+        #app-title a {
+            color: white;
+            text-decoration: none;
+        }
+
+
+
+        #login-screen,
+        #main-screen,
+        #set-selection-screen,
+        #match-screen,
+        #details-screen,
+        #serve-detail-screen {
+            flex: 1;
+        }
+    </style>
+</head>
+<header id="app-title">
+    <a href='offical index.html'>Tennis Match Analysis</a>
+</header>
+
+<body>
+    <div id="login-screen">
+        <h1>Login</h1>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela">
+        <style>
+            body {
+                font-family: "Varela", sans-serif;
+            }
+        </style>
+        <form id="login-form">
+            <style>
+                button {
+                    font-family: "Varela", sans-serif;
+                }
+            </style>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+            <p id="login-error" class="hidden">Invalid Username or Password</p>
+        </form>
+    </div>
+
+    <div id="main-screen" class="hidden">
+        <button id="create-match-btn">Create Match</button>
+    </div>
+
+    <div id="set-selection-screen" class="hidden">
+        <button id="three-sets-btn">3 Sets</button>
+        <button id="five-sets-btn">5 Sets</button>
+    </div>
+
+    <div id="match-screen" class="hidden">
+        <div id="score-board">
+            <p>Set Score: <span id="set-counter">0-0</span></p>
+            <p>Game Score: <span id="game-counter">0-0</span></p>
+            <p>Game: <span id="current-game">1</span></p>
+
+            <div id='score'>
+                <p id="player1-score-container"><span id="player1-score">0</span></p>
+                <p id="player2-score-container"><span id="player2-score">0</span></p>
+            </div>
+        </div>
+
+        <div id="main-screen">
+            <button id="create-match-main-btn">Create Match</a>
+          </div>
+
+        <button id="toggle-server-btn">Toggle Server</button>
+        <div id="server-display">Current Server: Player 1</div>
+
+
+        <div id="player1-actions">
+            <h3>Player 1 Actions</h3>
+            <button class="action-btn" data-player="1" data-action="Rally with">Rally</button>
+            <button class="action-btn" data-player="1" data-action="Mid Court Attacked with">Mid Court Attack</button>
+            <button class="serve-action-btn" data-player="1" data-action="Served">Serve</button>
+            <button class="serve-action-btn" data-player="1" data-action="Returned Serve With">Return Serve</button>
+        </div>
+        <div id="player2-actions">
+            <h3>Player 2 Actions</h3>
+            <button class="action-btn" data-player="2" data-action="Rally with">Rally</button>
+            <button class="action-btn" data-player="2" data-action="Mid Court Attacked with">Mid Court Attack</button>
+            <button class="serve-action-btn" data-player="2" data-action="Served">Serve</button>
+            <button class="serve-action-btn" data-player="2" data-action="Returned Serve With">Return Serve</button>
+        </div>
+        <button id="game-stats-btn">Game Stats</button>
+    </div>
+
+    <div id="details-screen" class="hidden">
+        <div id="details-options">
+            <button class="side-btn" data-side="Forehand Resulting In A">Forehand</button>
+            <button class="side-btn" data-side="Backhand Resulting In A">Backhand</button>
+        </div>
+        <div id="direction-options" class="hidden">
+            <button class="direction-btn" data-direction="a Fade">Fade</button>
+            <button class="direction-btn" data-direction="a Draw">Draw</button>
+        </div>
+        <div id="outcome-options" class="hidden">
+            <button class="outcome-btn" data-outcome="Winner">Winner Shot</button>
+            <button class="outcome-btn" data-outcome="Unforced Error">Unforced Error</button>
+            <button class="outcome-btn" data-outcome="Forced Error">Forced Error</button>
+        </div>
+    </div>
+    <div id='serve-detail-screen' class="hidden">
+        <div id="serve-details-options">
+            <button class="serve-num-btn" data-side="On First Serve Resulting In A">First Serve</button>
+            <button class="serve-num-btn" data-side="On Second Serve Resulting In A">Second Serve</button>
+        </div>
+
+        <div id="serve-direction-options" class="hidden">
+            <button class="serve-direction-btn" data-direction="a Fade">Fade</button>
+            <button class="serve-direction-btn" data-direction="a Draw">Draw</button>
+        </div>
+
+        <div id="serve-outcome-options" class="hidden">
+            <button class="serve-outcome-btn" data-outcome="Winner">Winner Shot</button>
+            <button class="serve-outcome-btn" data-outcome="Unforced Error">Unforced Error</button>
+            <button class="serve-outcome-btn" data-outcome="Forced Error">Forced Error</button>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div id="stats-screen" class="hidden">
+        <h1 id="game-stats">Game Stats</h1>
+        <button id="print-download-btn">Download Stats</button>
+        <button id="back-to-match-btn">Back to Match</button>
+
+        <div class="player-container">
+            <h1>Player 1</h1>
+            <div class="'action-boxes">
+                <div class="action-box">
+                    <h3>Forehand Rally</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p1-forehand-rally-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-forehand-rally-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-forehand-rally-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p1-forehand-rally-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-forehand-rally-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-forehand-rally-draw-forced-error">0</span></p>
+                    <h3>Backhand Rally</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p1-backhand-rally-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-backhand-rally-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-backhand-rally-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p1-backhand-rally-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-backhand-rally-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-backhand-rally-draw-forced-error">0</span></p>
+                </div>
+
+
+
+                <div class="action-box">
+                    <h3>Forehand Mid Attack</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p1-forehand-mid-ct-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-forehand-mid-ct-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-forehand-mid-ct-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p1-forehand-mid-ct-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-forehand-mid-ct-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-forehand-mid-ct-draw-forced-error">0</span></p>
+                    <h3>Backhand Mid Attack</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p1-backhand-mid-ct-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-backhand-mid-ct-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-backhand-mid-ct-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p1-backhand-mid-ct-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-backhand-mid-ct-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-backhand-mid-ct-draw-forced-error">0</span></p>
+                </div>
+
+                <div class="action-box">
+                    <h3>1st Serve</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p1-first-serve-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-first-serve-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-first-serve-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p1-first-serve-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-first-serve-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-first-serve-draw-forced-error">0</span></p>
+                    <h3>2nd Serve</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p1-second-serve-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-second-serve-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-second-serve-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p1-second-serve-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-second-serve-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-second-serve-draw-forced-error">0</span></p>
+                </div>
+
+
+                <div class="action-box">
+                    <h3>Returned 1st Serve</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p1-first-return-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-first-return-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-first-reture-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p1-first-return-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-first-return-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-first-reture-draw-forced-error">0</span></p>
+                    <h3>Returned 2nd Serve</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p1-second-return-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-second-return-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-second-return-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p1-second-return-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p1-second-return-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p1-second-return-draw-forced-error">0</span></p>
+                </div>
+            </div>
+
+
+            <div id="player2">
+                <h1>Player 2</h1>
+                <div id="p2-rally" class="action-box">
+                    <h3>Forehand Rally</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p2-forehand-rally-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-forehand-rally-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-forehand-rally-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p2-forehand-rally-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-forehand-rally-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-forehand-rally-draw-forced-error">0</span></p>
+                    <h3>Backhand Rally</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p2-backhand-rally-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-backhand-rally-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-backhand-rally-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p2-backhand-rally-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-backhand-rally-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-backhand-rally-draw-forced-error">0</span></p>
+                </div>
+
+                <div id="p2-mid" class="action-box">
+                    <h3>Forehand Mid Attack</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p2-forehand-mid-ct-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-forehand-mid-ct-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-forehand-mid-ct-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p2-forehand-mid-ct-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-forehand-mid-ct-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-forehand-mid-ct-draw-forced-error">0</span></p>
+                    <h3>Backhand Mid Attack</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p2-backhand-mid-ct-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-backhand-mid-ct-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-backhand-mid-ct-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p2-backhand-mid-ct-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-backhand-mid-ct-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-backhand-mid-ct-draw-forced-error">0</span></p>
+                </div>
+
+                <div id="p2-serve" class="action-box">
+                    <h3>1st Serve</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p2-first-serve-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-first-serve-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-first-serve-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p2-first-serve-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-first-serve-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-first-serve-draw-forced-error">0</span></p>
+                    <h3>2nd Serve</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p2-second-serve-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-second-serve-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-second-serve-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p2-second-serve-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-second-serve-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-second-serve-draw-forced-error">0</span></p>
+                </div>
+
+                <div id="p2-return" class="action-box">
+                    <h3>Returned 1st Serve</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p2-first-return-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-first-return-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-first-return-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p2-first-return-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-first-return-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-first-return-draw-forced-error">0</span></p>
+                    <h3>Returned 2nd Serve</h3>
+                    <h4>Fade</h4>
+                    <p>Winner: <span id="p2-second-return-fade-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-second-return-fade-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-second-return-fade-forced-error">0</span></p>
+                    <h4>Draw</h4>
+                    <p>Winner: <span id="p2-second-return-draw-winner">0</span></p>
+                    <p>Unforced Error: <span id="p2-second-return-draw-unforced-error">0</span></p>
+                    <p>Forced Error: <span id="p2-second-return-draw-forced-error">0</span></p>
+                </div>
+            </div>
+        </div>
+
+        <h1>Match Timeline</h1>
+        <ul id="stats-list"></ul>
+
+
+    </div>
+    <script src="offical script.js"></script>
+
+</body>
+
+
+</html>
